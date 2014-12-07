@@ -12,7 +12,7 @@ class StoriesController < ApplicationController
     @data = Array.new
 
     @earliest_date.to_date.upto(@latest_date.to_date) do |date|
-      art = Article.where(published_date: date.to_datetime)
+      art = @story.articles.where(published_date: date.to_datetime)
       if art.size > 0
         @data.push(art.first)
       else

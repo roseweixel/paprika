@@ -2,9 +2,13 @@ $(document).ready(function(){
 
   $('.story').on('click', function(event){
     event.preventDefault();
+    $("body .row .col-md-1").remove();
+    $("body .row").prepend( '<div class="col-md-1"><h5>Rank</h5></div>' );
     var $this = $(this);
+    $("#chart").html("");
     
     $.ajax({url: $this.attr('href'), dataType: 'JSON'}).done(function(result){
+      debugger;
       var data = [];
       var headlines = {};
       var abstracts = {};
