@@ -1,7 +1,17 @@
 <h1>What's Happening?</h1>
 
-<ul>
-<% @stories.each do |story| %>
-	<li><%= link_to story.name, story_path(story) %></li>
-<% end %>
-</ul>
+<div class="row">
+  <div class="col-md-9">
+    <div id="chart" class="chart-mod"></div>
+  </div>
+
+  <div class="col-md-3">
+  <ul>
+  <% @stories.each do |story| %>
+  	<li><%= link_to story.name, story_path(story), class: "story" %></li>
+  <% end %>
+  </ul>
+  </div>
+
+
+</div>

@@ -33,3 +33,24 @@ body {
 .theme-showcase > p > .btn {
   margin: 5px 0;
 }
+
+#axis0 {
+  position: absolute;
+  height: 800px;
+  width: 40px;
+}
+
+#axis1 {
+  position: absolute;
+  left: 1050px;
+  height: 800px;
+  width: 40px;
+}
+
+.abstract {
+  width: 300px;
+}
+
+.headline {
+  text-align: center;
+}

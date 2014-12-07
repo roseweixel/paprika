@@ -26,32 +26,23 @@ class Story < ActiveRecord::Base
       #binding.pry
       if article["title"] =~ /#{self.name}/i || article["abstract"] =~ /#{self.name}/i
         #binding.pry
-        self.articles.find_or_create_by(:name => article["title"], :abstract => article["abstract"], :url => article["url"], :rank => rank+1, :published_date =>  DateTime.iso8601(article["published_date"]))
+        articles_for_date = Article.where(published_date: article["published_date"].to_date)
+        if !articles_for_date.empty?
+          articles_for_date.each do |article_for_date|
+            if rank+1 < article_for_date.rank
+              new_article = self.articles.find_or_create_by(:name => article["title"], :abstract => article["abstract"], :url => article["url"], :rank => rank+1, :published_date => article["published_date"].to_date)
+              new_article.format_abstract
+              new_article.format_name
+              article_for_date.destroy
+            end
+          end
+        else
+          new_article = self.articles.find_or_create_by(:name => article["title"], :abstract => article["abstract"], :url => article["url"], :rank => rank+1, :published_date =>  article["published_date"].to_date)
+          new_article.format_abstract
+          new_article.format_name
+        end
       end
     end
-  end
-  #des_facet
-  # def articles
-  #   type = "json"
-
-  #   url = search_url_basic
-
-  #   response_hash = JSON.load(open(url))
-
-  #   articles = response_hash["response"]["docs"]
-  # end
-
-  # def search_url_basic
-  #   "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{timesified_name}&api-key=#{ENV["ny_times_article_search_key"]}"
-  # end
-
-  def make_articles_for(get_most_populars)
-    # iterate over the most populars looking for self.name
-      # GO THROUGH THESE STEPS AND WHEN FOUND, MAKE ARTICLE
-      # look in the title
-      # look in the abstract
-      # whatever else there is to look in
-    # parse the 'rank' (the index in the array), the date, and the article object itself
   end
 
 end

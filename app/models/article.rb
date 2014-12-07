@@ -16,5 +16,32 @@ class Article < ActiveRecord::Base
     name.gsub("&#8217;", "'")
   end
 
+  def format_abstract
+    abstract_array = self.abstract.split(" ")
+    formatted_abstract = Array.new
+    abstract_array.each_with_index do |word, index|
+      formatted_abstract << word
+      if index % 7 == 0 && index > 0 && abstract_array[index+2]
+        formatted_abstract << '<br>'
+      end
+    end
+    formatted_abstract = formatted_abstract.join(" ")
+    self.update(formatted_abstract: formatted_abstract)
+  end
+
+  def format_name
+    name_array = self.name.split(" ")
+    formatted_name = Array.new
+    name_array.each_with_index do |word, index|
+      formatted_name << word
+      if index % 7 == 0 && index > 0
+        formatted_name << '<br>'
+      end
+    end
+    formatted_name = formatted_name.join(" ")
+    self.update(formatted_name: formatted_name)
+  end
+
+
 
 end
