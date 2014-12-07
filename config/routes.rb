@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   get 'stories/' => 'stories#index'
 
-  get 'stories/:id' => 'stories#show'
+  get 'stories/:id' => 'stories#show', as: 'story'
 
 end

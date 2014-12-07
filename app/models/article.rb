@@ -9,7 +9,11 @@ class Article < ActiveRecord::Base
 
   def get_datetime
     # this is how to get the date as a datetime object given a single article in the response hash from a NYTimes API call
-    DateTime.iso8601(response["response"]["docs"].first["pub_date"])
+    DateTime.iso8601(published_date)
+  end
+
+  def name_string
+    name.gsub("&#8217;", "'")
   end
 
 

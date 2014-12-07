@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141205015217) do
     t.string   "url"
     t.string   "abstract"
     t.integer  "rank"
-    t.date     "published_date"
+    t.datetime "published_date"
   end
 
   add_index "articles", ["day_id"], name: "index_articles_on_day_id"

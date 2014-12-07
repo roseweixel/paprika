@@ -23,11 +23,14 @@ class Story < ActiveRecord::Base
   def create_articles_for_story
     all_populars = get_most_populars
     all_populars.each_with_index do |article, rank|
+      #binding.pry
       if article["title"] =~ /#{self.name}/i || article["abstract"] =~ /#{self.name}/i
-        self.articles.find_or_create_by(:name => article["title"], :abstract => article["abstract"], :url => article["url"], :rank => rank+1, :published_date => article["published_date"])
+        #binding.pry
+        self.articles.find_or_create_by(:name => article["title"], :abstract => article["abstract"], :url => article["url"], :rank => rank+1, :published_date =>  DateTime.iso8601(article["published_date"]))
       end
     end
   end
+  #des_facet
   # def articles
   #   type = "json"
 

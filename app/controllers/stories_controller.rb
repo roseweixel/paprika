@@ -5,5 +5,6 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @articles = @story.articles.order(:published_date)
   end
 end

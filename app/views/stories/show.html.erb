@@ -1,1 +1,5 @@
-<%= @story.name %>
+<h1><%= @story.name %></h1>
+
+<% @articles.each do |article| %>
+	<p><%= article.name_string %> <%= article.published_date %> <%= article.rank %></p>
+<% end %>
