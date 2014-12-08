@@ -1,14 +1,24 @@
 $(document).ready(function(){
 
   $('.story').on('click', function(event){
+
     event.preventDefault();
-    $("body .row .col-md-1").remove();
-    $("body .row").prepend( '<div class="col-md-1"><h5>Rank</h5></div>' );
     var $this = $(this);
-    $("#chart").html("");
+    $('#chart').html("");
+    $('.bullet').remove();
+
+    //Editing the heading when a topic is clicked
+    var bulletHTML = '<span class="bullet"> •</span>'
+
+    $topic = $(this).text()
+    $('.saying').text(" what happened: " + $topic + ".")
+    $this.append(bulletHTML)
     
+    // $("body .row .col-md-1").remove();
+    // $("body .row").prepend( '<div class="col-md-1"><h5>Rank</h5></div>' );
+    
+    //Creating the chart
     $.ajax({url: $this.attr('href'), dataType: 'JSON'}).done(function(result){
-      debugger;
       var data = [];
       var headlines = {};
       var abstracts = {};
