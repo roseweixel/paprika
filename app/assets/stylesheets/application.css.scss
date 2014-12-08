@@ -12,15 +12,9 @@
  *
  *= require_tree .
  *= require_self
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
  */
-@import "bootstrap";
-/* Some Style from the Bootstrap Default Theme */
+
 body {
-  padding-top: 30px;
   padding-bottom: 30px;
   font-family: 'Lato', sans-serif;
 }
@@ -56,8 +50,8 @@ body {
   text-align: center;
 }
 
-.heading {
-  padding: 0 0 15px 0;
+#heading {
+  padding: 20px 0 15px 0;
 }
 
 .paprika {
@@ -94,7 +88,7 @@ body {
 .story {
   font-family: 'Lato Thin', sans-serif;
   font-weight: 100;
-  font-size: 24px;
+  font-size: 21px;
   color: #0D1B1E; 
 }
 
@@ -121,4 +115,21 @@ a.story:focus {
   font-size: 18px;
   color: #0D1B1E; 
   text-align: right;
+}
+
+.paprika-nav {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #FF4D00;
+  height: 40px;
+  width: 100%;
+  margin: 0 0 15px 0;
+}
+
+.tagline {
+  padding: 10px 0 0 20px;
+  font-family: 'Lato Thin', sans-serif;
+  font-weight: 100;
+  font-size: 10px;
+  color: #FF4D00; 
+  font-style: uppercase;
 }
