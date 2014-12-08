@@ -19,10 +19,12 @@
  */
 @import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
+
+html,
 body {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  height: 100%;
   font-family: 'Lato', sans-serif;
+  /* The html and body elements cannot have any padding or margin. */
 }
 
 .theme-dropdown .dropdown-menu {
@@ -50,14 +52,16 @@ body {
 
 .abstract {
   width: 350px;
+  font-size: 14px;
 }
 
 .headline {
   text-align: center;
+  font-size: 14px;
 }
 
-.heading {
-  padding: 0 0 15px 0;
+#heading {
+  padding: 20px 0 20px 0;
 }
 
 .paprika {
@@ -68,7 +72,7 @@ body {
 }
 
 .chart-container {
-  padding: 7px 0 0 5px;
+  padding: 10px 0 0 5px;
 }
 
 .saying {
@@ -94,7 +98,7 @@ body {
 .story {
   font-family: 'Lato Thin', sans-serif;
   font-weight: 100;
-  font-size: 24px;
+  font-size: 21px;
   color: #0D1B1E; 
 }
 
@@ -121,4 +125,40 @@ a.story:focus {
   font-size: 18px;
   color: #0D1B1E; 
   text-align: right;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -40px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+  height: 40px;
+}
+#footer {
+  background-color: #f5f5f5;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.credit {
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  color: #0D1B1E;
+  padding: 12px 0 0 0;
 }
