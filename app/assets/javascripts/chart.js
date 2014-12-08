@@ -5,11 +5,13 @@ $(document).ready(function(){
     var $this = $(this);
     $('#chart').html("");
     $('.bullet').remove();
+    $('#saying').text('');
 
     //Editing the heading when a topic is clicked
     var bulletHTML = '<span class="bullet"> •</span>'
     $topic = $(this).text()
-    $('.saying').text(" what happened: " + $topic + ".")
+    var message = " what happened: " + $topic + "."
+    showText('#saying', message, 0);
     $this.append(bulletHTML)
     
     //Appending Rank Y-Axis Title
@@ -88,8 +90,16 @@ $(document).ready(function(){
   $('body').on('click','svg path',function(e){
     var $articleId = $(this).parent().siblings('.detail').children('.item.active').children('div').attr('id');
      $.ajax({url: '/articles/' + $articleId, dataType: 'JSON'}).done(function(result){
-      window.open(result['url'], 'window name', 'window settings');
+      window.open(result['url'], '_blank');
      });
   });
 
 });
+
+var showText = function (target, message, index) {    
+  if (index < message.length) { 
+    $(target).append(message[index++]); 
+    setTimeout(function () { showText(target, message, index); }, Math.random() * 20); 
+  } 
+}
+
