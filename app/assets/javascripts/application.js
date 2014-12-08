@@ -17,3 +17,4 @@
 //= require rickshaw
 //= require moment
 //= require chart
+//= require blink

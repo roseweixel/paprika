@@ -1,18 +1,20 @@
-<h1>What's Happening?</h1>
+<div id='heading'>
+  <span class="paprika">Paprika,</span><span class="saying"> what's happening<span class="blink">?</span></span>
+</div>
 
 <div class="row">
-  <div class="col-md-8">
-    <div id="chart" class="chart-mod">
+
+  <div class="col-md-2">
+    <%= render @stories %>
+  </div>
+
+  <div class="col-md-10 chart-container">
+    <div class="row chart-row">
+      <div class="col-md-11 chart-container">
+        <div id="chart" class="chart-mod">
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="col-md-3">
-  <ul>
-  <% @stories.each do |story| %>
-  	<li><%= link_to story.name, story_path(story), class: "story" %></li>
-  <% end %>
-  </ul>
-  </div>
-
 
 </div>

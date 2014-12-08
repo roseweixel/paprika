@@ -2,13 +2,22 @@ $(document).ready(function(){
 
   $('.story').on('click', function(event){
     event.preventDefault();
-    $("body .row .col-md-1").remove();
-    $("body .row").prepend( '<div class="col-md-1"><h5>Rank</h5></div>' );
     var $this = $(this);
-    $("#chart").html("");
+    $('#chart').html("");
+    $('.bullet').remove();
+
+    //Editing the heading when a topic is clicked
+    var bulletHTML = '<span class="bullet"> •</span>'
+    $topic = $(this).text()
+    $('.saying').text(" what happened: " + $topic + ".")
+    $this.append(bulletHTML)
     
+    //Appending Rank Y-Axis Title
+    $('.chart-row .rank').remove();
+    $('.chart-row').prepend('<div class="rank col-md-1">Rank</div>')
+  
+    //Creating the chart
     $.ajax({url: $this.attr('href'), dataType: 'JSON'}).done(function(result){
-      debugger;
       var data = [];
       var headlines = {};
       var abstracts = {};
@@ -33,12 +42,12 @@ $(document).ready(function(){
       var graph = new Rickshaw.Graph( {
         element: document.querySelector("#chart"),
         renderer: 'line',
-        width: 580,
-        height: 250,
+        width: 680,
+        height: 350,
         min: -50,
         max: 850,
         series: [ {
-                color: 'steelblue',
+                color: '#FF4D00',
                 data: data
         } ]
       } );
