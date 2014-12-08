@@ -6,16 +6,19 @@ class Story < ActiveRecord::Base
   has_many :articles
   has_many :scores
 
+  MAX_API_CALLS = 40
+  ARTICLES_PER_CALL = 20
+
   # returns an array of 500 most popular articles (from most to least popular)
   def get_most_populars
     article_array = []
     offset = 0
-    for i in 1..40
+    MAX_API_CALLS.times do
       type = "json"
       url = "http://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/30.json?offset=#{offset}&api-key=#{ENV["ny_times_most_popular_key"]}"
       response_hash = JSON.load(open(url))
       article_array = article_array + response_hash["results"]
-      offset += 20
+      offset += ARTICLES_PER_CALL
     end
     article_array
   end
