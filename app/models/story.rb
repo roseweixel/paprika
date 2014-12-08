@@ -10,7 +10,7 @@ class Story < ActiveRecord::Base
   ARTICLES_PER_CALL = 20
 
   # returns an array of 500 most popular articles (from most to least popular)
-  def get_most_populars
+  def get_articles
     article_array = []
     offset = 0
     MAX_API_CALLS.times do
@@ -23,8 +23,8 @@ class Story < ActiveRecord::Base
     article_array
   end
 
-  def create_articles_for_story
-    all_populars = get_most_populars
+  def create_articles
+    all_populars = get_articles
     all_populars.each_with_index do |article, rank|
       #binding.pry
       if article["title"] =~ /#{self.name}/i || article["abstract"] =~ /#{self.name}/i
