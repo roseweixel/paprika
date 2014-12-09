@@ -6,6 +6,7 @@ $(document).ready(function(){
     $('#chart').html("");
     $('.bullet').remove();
     $('#saying').text('');
+    $('.click-container').remove();
 
     //Editing the heading when a topic is clicked
     var bulletHTML = '<span class="bullet"> •</span>'
@@ -84,7 +85,12 @@ $(document).ready(function(){
 
       graph.render();
 
+
+      //Append click messaging
+      $('.chart-container').append('<div class="click-container">Click on nodes to view articles.</div>')
+      
     });
+
   });
 
   $('body').on('click','svg path',function(e){
