@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'date'
-require 'pry'
 
 class Story < ActiveRecord::Base
   has_many :articles
