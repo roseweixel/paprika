@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 ruby '2.1.3'
 
 gem 'figaro'
-gem 'sqlite3'
 gem 'pg'
 gem 'taps'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
