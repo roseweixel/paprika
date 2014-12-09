@@ -26,9 +26,7 @@ class Story < ActiveRecord::Base
   def create_articles
     all_populars = get_articles
     all_populars.each_with_index do |article, rank|
-      #binding.pry
       if article["title"] =~ /#{self.name}/i || article["abstract"] =~ /#{self.name}/i
-        #binding.pry
         articles_for_date = Article.where(published_date: article["published_date"].to_date)
         if !articles_for_date.empty?
           articles_for_date.each do |article_for_date|

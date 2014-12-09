@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141207211427) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "articles", force: true do |t|
     t.string   "name"
     t.integer  "story_id"
@@ -27,8 +30,8 @@ ActiveRecord::Schema.define(version: 20141207211427) do
     t.text     "formatted_name"
   end
 
-  add_index "articles", ["day_id"], name: "index_articles_on_day_id"
-  add_index "articles", ["story_id"], name: "index_articles_on_story_id"
+  add_index "articles", ["day_id"], name: "index_articles_on_day_id", using: :btree
+  add_index "articles", ["story_id"], name: "index_articles_on_story_id", using: :btree
 
   create_table "days", force: true do |t|
     t.datetime "date"

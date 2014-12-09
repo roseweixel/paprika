@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
+ruby '2.1.3'
 
 gem 'figaro'
+gem 'sqlite3'
+gem 'pg'
+gem 'taps'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use SCSS for stylesheets
@@ -44,14 +48,12 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "simplecov"
   gem "database_cleaner"
-  gem "sqlite3"
   gem "pry"
   gem "guard-rspec", require: false
   gem "thin"
 end
 
 group :production do
-  gem "pg"
   gem "google-analytics-rails"
   gem "rails_12factor"
 end
